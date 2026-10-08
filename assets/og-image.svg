@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="0.85" cy="0.05" r="0.7">
+      <stop offset="0" stop-color="#FFB340" stop-opacity="0.9"/>
+      <stop offset="0.35" stop-color="#FF6A1F" stop-opacity="0.55"/>
+      <stop offset="0.7" stop-color="#ED3D06" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0A0A0B"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <path d="M100 150 148 122l48 28v56l-48 28-48-28v-56Z" stroke="#F4F4F5" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="148" cy="178" rx="14" ry="22" stroke="#F4F4F5" stroke-width="6"/>
+  <circle cx="186" cy="138" r="9" fill="#ED3D06"/>
+  <text x="220" y="190" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#F4F4F5" letter-spacing="4">ZERODATA</text>
+  <text x="100" y="360" font-family="Arial, sans-serif" font-size="78" font-weight="700" fill="#F4F4F5">IA privada dentro</text>
+  <text x="100" y="450" font-family="Arial, sans-serif" font-size="78" font-weight="700" fill="#F4F4F5">da sua empresa</text>
+  <text x="100" y="530" font-family="Arial, sans-serif" font-size="30" fill="#9A9AA3">Seus dados nunca saem da sua infraestrutura.</text>
+</svg>

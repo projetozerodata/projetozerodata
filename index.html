@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZeroData</title>
+  <meta name="description" content="ZeroData implanta IA local (on-premise ou nuvem privada) para empresas. Seus dados são processados dentro da sua infraestrutura, sem depender de APIs externas. Aderente à LGPD.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Open Graph (para o og:image funcionar em redes sociais, use URL absoluta e PNG/JPG — veja README) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="ZeroData — IA privada dentro da sua empresa">
+  <meta property="og:description" content="Projetado para processar os dados da sua empresa dentro da sua própria infraestrutura, sem depender de APIs externas para as consultas.">
+  <meta property="og:image" content="assets/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Sprite: símbolo do logo ZeroData -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="zd-dot" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFB340"/>
+        <stop offset="1" stop-color="#ED3D06"/>
+      </linearGradient>
+      <symbol id="zd-mark" viewBox="0 0 40 40">
+        <path d="M20 3.5 34.3 11.75v16.5L20 36.5 5.7 28.25v-16.5L20 3.5Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+        <ellipse cx="20" cy="20" rx="4.6" ry="7" fill="none" stroke="currentColor" stroke-width="2.6"/>
+        <circle cx="30" cy="10.5" r="3.4" fill="url(#zd-dot)"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="frame">
+
+    <!-- 0. BARRA DE AVISO -->
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <a class="topbar__msg" href="#contato">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span>Implantação de IA local para empresas</span>
+          <span class="topbar__arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></span>
+          <span class="sr-only">Solicitar implantação</span>
+        </a>
+        <div class="topbar__links">
+          <a href="#faq">Suporte</a>
+          <a href="#contato">Entrar</a>
+          <span class="topbar__lang" aria-label="Idioma: Português"><i data-lucide="globe" aria-hidden="true"></i> PT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. NAVBAR -->
+    <header class="nav" id="nav">
+      <div class="container nav__inner">
+        <a class="logo" href="#topo" aria-label="ZeroData — página inicial">
+          <svg class="logo__mark" aria-hidden="true"><use href="#zd-mark"/></svg>
+          <span class="logo__text">ZeroDATA</span>
+        </a>
+
+        <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-panel">
+          <i data-lucide="menu" aria-hidden="true"></i>
+        </button>
+
+        <div class="nav__backdrop" id="nav-backdrop" hidden></div>
+
+        <nav class="nav__panel" id="nav-panel" aria-label="Principal">
+          <div class="nav__panel-head">
+            <span class="logo__text">MENU</span>
+            <button class="nav__close" id="nav-close" type="button" aria-label="Fechar menu"><i data-lucide="x" aria-hidden="true"></i></button>
+          </div>
+
+          <ul class="menu">
+            <li class="menu__item has-dd">
+              <button class="menu__link" type="button" aria-expanded="false" data-spy="solucoes">Soluções <i data-lucide="chevron-down" class="chev" aria-hidden="true"></i></button>
+              <ul class="dd">
+                <li><a href="#solucoes"><i data-lucide="message-square" aria-hidden="true"></i>Assistente Corporativo</a></li>
+                <li><a href="#solucoes"><i data-lucide="file-search" aria-hidden="true"></i>Busca em Documentos (RAG)</a></li>
+                <li><a href="#solucoes"><i data-lucide="workflow" aria-hidden="true"></i>Automação de Processos</a></li>
+                <li><a href="#solucoes"><i data-lucide="bar-chart-3" aria-hidden="true"></i>Análise de Dados</a></li>
+                <li><a href="#solucoes"><i data-lucide="headset" aria-hidden="true"></i>IA para Atendimento</a></li>
+              </ul>
+            </li>
+            <li class="menu__item"><a class="menu__link" href="#como-funciona" data-spy="como-funciona">Como funciona</a></li>
+            <li class="menu__item"><a class="menu__link" href="#seguranca" data-spy="seguranca">Segurança</a></li>
+            <li class="menu__item has-dd">
+              <button class="menu__link" type="button" aria-expanded="false" data-spy="setores">Setores <i data-lucide="chevron-down" class="chev" aria-hidden="true"></i></button>
+              <ul class="dd">
+                <li><a href="#setores"><i data-lucide="scale" aria-hidden="true"></i>Jurídico</a></li>
+                <li><a href="#setores"><i data-lucide="landmark" aria-hidden="true"></i>Financeiro</a></li>
+                <li><a href="#setores"><i data-lucide="heart-pulse" aria-hidden="true"></i>Saúde</a></li>
+                <li><a href="#setores"><i data-lucide="factory" aria-hidden="true"></i>Indústria</a></li>
+                <li><a href="#setores"><i data-lucide="shopping-bag" aria-hidden="true"></i>Varejo</a></li>
+                <li><a href="#setores"><i data-lucide="building-2" aria-hidden="true"></i>Governo</a></li>
+              </ul>
+            </li>
+            <li class="menu__item"><a class="menu__link" href="#planos" data-spy="planos">Planos</a></li>
+            <li class="menu__item has-dd">
+              <button class="menu__link" type="button" aria-expanded="false" data-spy="faq">Recursos <i data-lucide="chevron-down" class="chev" aria-hidden="true"></i></button>
+              <ul class="dd">
+                <!-- Troque os links abaixo pelas suas páginas de Documentação, Blog e Whitepapers -->
+                <li><a href="#contato"><i data-lucide="book-open" aria-hidden="true"></i>Documentação</a></li>
+                <li><a href="#contato"><i data-lucide="newspaper" aria-hidden="true"></i>Blog</a></li>
+                <li><a href="#contato"><i data-lucide="file-text" aria-hidden="true"></i>Whitepapers</a></li>
+                <li><a href="#faq"><i data-lucide="help-circle" aria-hidden="true"></i>FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="nav__actions">
+            <a class="btn btn--secondary btn--sm" href="#contato">Fale conosco</a>
+            <a class="btn btn--primary btn--sm" href="#contato">Solicitar demonstração</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+
+      <!-- 2. HERO -->
+      <section class="hero" id="topo" aria-labelledby="hero-title">
+        <div class="hero__bg" aria-hidden="true">
+          <div class="hero__grid"></div>
+          <div class="hero__glow hero__glow--a"></div>
+          <div class="hero__glow hero__glow--b"></div>
+        </div>
+
+        <div class="container hero__content">
+          <span class="badge reveal"><i data-lucide="sparkles" aria-hidden="true"></i>IA sob medida</span>
+          <h1 id="hero-title" class="hero__title reveal">IA privada dentro da sua empresa</h1>
+          <p class="hero__lead reveal">Projetado para processar os dados da sua empresa dentro da sua própria infraestrutura, sem depender de APIs externas para as consultas.</p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--primary" href="demo.html" target="_blank" rel="noopener">Acessar Demo</a>
+            <a class="btn btn--outline" href="#contato">Agendar demonstração</a>
+          </div>
+        </div>
+
+        <!-- Ilustração de circuito — versão desktop/tablet -->
+        <div class="circuit circuit--d" role="img" aria-label="Ilustração: chip de IA central conectado a banco de dados, servidor, segurança, documentos, criptografia, usuários e processamento, tudo dentro da infraestrutura da empresa.">
+          <svg class="circuit__svg" viewBox="0 0 1200 440" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="glowD" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0" stop-color="#FF6A1F" stop-opacity="0.55"/>
+                <stop offset="0.5" stop-color="#ED3D06" stop-opacity="0.18"/>
+                <stop offset="1" stop-color="#ED3D06" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="chipD" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2A2A2F"/>
+                <stop offset="1" stop-color="#101012"/>
+              </linearGradient>
+            </defs>
+            <circle class="chip-glow" cx="600" cy="230" r="190" fill="url(#glowD)"/>
+
+            <g class="traces">
+              <path class="trace" d="M176 90H260C330 90 330 195 400 195H523"/>
+              <path class="trace" d="M106 230H300L330 215H523"/>
+              <path class="trace" d="M206 370H300C380 370 400 255 470 255H523"/>
+              <path class="trace" d="M1024 90H940C870 90 870 195 800 195H677"/>
+              <path class="trace" d="M1094 230H900L870 215H677"/>
+              <path class="trace" d="M994 370H900C820 370 800 255 730 255H677"/>
+              <path class="trace" d="M600 362V307"/>
+              <path class="trace trace--faint" d="M523 235H440L410 262H330"/>
+              <path class="trace trace--faint" d="M677 235H760L790 262H870"/>
+            </g>
+            <g class="pulses">
+              <path class="pulse" pathLength="100" style="--d:0s"   d="M176 90H260C330 90 330 195 400 195H523"/>
+              <path class="pulse" pathLength="100" style="--d:1.1s" d="M106 230H300L330 215H523"/>
+              <path class="pulse" pathLength="100" style="--d:2.2s" d="M206 370H300C380 370 400 255 470 255H523"/>
+              <path class="pulse" pathLength="100" style="--d:0.6s" d="M1024 90H940C870 90 870 195 800 195H677"/>
+              <path class="pulse" pathLength="100" style="--d:1.7s" d="M1094 230H900L870 215H677"/>
+              <path class="pulse" pathLength="100" style="--d:2.6s" d="M994 370H900C820 370 800 255 730 255H677"/>
+              <path class="pulse" pathLength="100" style="--d:1.4s" d="M600 362V307"/>
+            </g>
+
+            <!-- pinos do chip -->
+            <g fill="#2B2B31" stroke="rgba(255,255,255,.12)">
+              <rect x="523" y="192" width="14" height="6" rx="3"/><rect x="523" y="212" width="14" height="6" rx="3"/>
+              <rect x="523" y="232" width="14" height="6" rx="3"/><rect x="523" y="252" width="14" height="6" rx="3"/>
+              <rect x="663" y="192" width="14" height="6" rx="3"/><rect x="663" y="212" width="14" height="6" rx="3"/>
+              <rect x="663" y="232" width="14" height="6" rx="3"/><rect x="663" y="252" width="14" height="6" rx="3"/>
+              <rect x="557" y="293" width="6" height="14" rx="3"/><rect x="577" y="293" width="6" height="14" rx="3"/>
+              <rect x="597" y="293" width="6" height="14" rx="3"/><rect x="617" y="293" width="6" height="14" rx="3"/>
+              <rect x="637" y="293" width="6" height="14" rx="3"/>
+            </g>
+            <rect x="535" y="165" width="130" height="130" rx="28" fill="url(#chipD)" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+            <rect x="543" y="173" width="114" height="114" rx="22" fill="none" stroke="rgba(255,255,255,.05)"/>
+            <text class="chip-text" x="600" y="247" text-anchor="middle">AI</text>
+          </svg>
+
+          <div class="node" style="left:11.67%;top:20.45%;--d:0s"><div class="node__card"><i data-lucide="database" aria-hidden="true"></i></div><span class="node__label">Banco de dados</span></div>
+          <div class="node" style="left:5.83%;top:52.27%;--d:.8s"><div class="node__card"><i data-lucide="server" aria-hidden="true"></i></div><span class="node__label">Servidor</span></div>
+          <div class="node" style="left:14.17%;top:84.1%;--d:1.6s"><div class="node__card"><i data-lucide="shield-check" aria-hidden="true"></i></div><span class="node__label">Segurança</span></div>
+          <div class="node" style="left:88.33%;top:20.45%;--d:.4s"><div class="node__card"><i data-lucide="file-text" aria-hidden="true"></i></div><span class="node__label">Documentos</span></div>
+          <div class="node" style="left:94.17%;top:52.27%;--d:1.2s"><div class="node__card"><i data-lucide="lock" aria-hidden="true"></i></div><span class="node__label">Criptografia</span></div>
+          <div class="node" style="left:85.83%;top:84.1%;--d:2s"><div class="node__card"><i data-lucide="users" aria-hidden="true"></i></div><span class="node__label">Usuários</span></div>
+          <div class="node" style="left:50%;top:90.9%;--d:1s"><div class="node__card"><i data-lucide="cpu" aria-hidden="true"></i></div><span class="node__label">Processamento</span></div>
+        </div>
+
+        <!-- Ilustração de circuito — versão mobile simplificada -->
+        <div class="circuit circuit--m" aria-hidden="true">
+          <svg class="circuit__svg" viewBox="0 0 360 400" preserveAspectRatio="none" focusable="false">
+            <defs>
+              <radialGradient id="glowM" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0" stop-color="#FF6A1F" stop-opacity="0.55"/>
+                <stop offset="0.5" stop-color="#ED3D06" stop-opacity="0.18"/>
+                <stop offset="1" stop-color="#ED3D06" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="chipM" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2A2A2F"/>
+                <stop offset="1" stop-color="#101012"/>
+              </linearGradient>
+            </defs>
+            <circle class="chip-glow" cx="180" cy="200" r="150" fill="url(#glowM)"/>
+            <g class="traces">
+              <path class="trace" d="M60 50H90C115 50 100 165 120 165"/>
+              <path class="trace" d="M60 200C95 200 95 200 120 200"/>
+              <path class="trace" d="M60 350H90C115 350 100 235 120 235"/>
+              <path class="trace" d="M300 50H270C245 50 260 165 240 165"/>
+              <path class="trace" d="M300 200C265 200 265 200 240 200"/>
+              <path class="trace" d="M300 350H270C245 350 260 235 240 235"/>
+            </g>
+            <g class="pulses">
+              <path class="pulse" pathLength="100" style="--d:0s"   d="M60 50H90C115 50 100 165 120 165"/>
+              <path class="pulse" pathLength="100" style="--d:1.2s" d="M60 200C95 200 95 200 120 200"/>
+              <path class="pulse" pathLength="100" style="--d:2.3s" d="M60 350H90C115 350 100 235 120 235"/>
+              <path class="pulse" pathLength="100" style="--d:.6s"  d="M300 50H270C245 50 260 165 240 165"/>
+              <path class="pulse" pathLength="100" style="--d:1.8s" d="M300 200C265 200 265 200 240 200"/>
+              <path class="pulse" pathLength="100" style="--d:2.8s" d="M300 350H270C245 350 260 235 240 235"/>
+            </g>
+            <g fill="#2B2B31" stroke="rgba(255,255,255,.12)">
+              <rect x="112" y="162" width="12" height="6" rx="3"/><rect x="112" y="197" width="12" height="6" rx="3"/><rect x="112" y="232" width="12" height="6" rx="3"/>
+              <rect x="236" y="162" width="12" height="6" rx="3"/><rect x="236" y="197" width="12" height="6" rx="3"/><rect x="236" y="232" width="12" height="6" rx="3"/>
+            </g>
+            <rect x="120" y="140" width="120" height="120" rx="26" fill="url(#chipM)" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+            <text class="chip-text" x="180" y="222" text-anchor="middle">AI</text>
+          </svg>
+          <div class="node" style="left:16.67%;top:12.5%;--d:0s"><div class="node__card"><i data-lucide="database"></i></div></div>
+          <div class="node" style="left:16.67%;top:50%;--d:.8s"><div class="node__card"><i data-lucide="server"></i></div></div>
+          <div class="node" style="left:16.67%;top:87.5%;--d:1.6s"><div class="node__card"><i data-lucide="shield-check"></i></div></div>
+          <div class="node" style="left:83.33%;top:12.5%;--d:.4s"><div class="node__card"><i data-lucide="file-text"></i></div></div>
+          <div class="node" style="left:83.33%;top:50%;--d:1.2s"><div class="node__card"><i data-lucide="lock"></i></div></div>
+          <div class="node" style="left:83.33%;top:87.5%;--d:2s"><div class="node__card"><i data-lucide="users"></i></div></div>
+        </div>
+      </section>
+
+      <!-- 3. MÉTRICAS -->
+      <section class="metrics" aria-label="Números do ZeroData">
+        <div class="container metrics__grid">
+          <div class="metric reveal">
+            <span class="metric__icon"><i data-lucide="database" aria-hidden="true"></i></span>
+            <strong class="metric__value"><span data-count="100" data-suffix="%">100%</span></strong>
+            <span class="metric__label">dos dados dentro da sua infraestrutura</span>
+          </div>
+          <div class="metric reveal">
+            <span class="metric__icon"><i data-lucide="cloud-off" aria-hidden="true"></i></span>
+            <strong class="metric__value"><span data-count="0">0</span></strong>
+            <span class="metric__label">chamadas a APIs externas nas consultas</span>
+          </div>
+          <div class="metric reveal">
+            <span class="metric__icon"><i data-lucide="calendar-check" aria-hidden="true"></i></span>
+            <strong class="metric__value"><span data-count="30" data-suffix=" dias">30 dias</span></strong>
+            <span class="metric__label">para a implantação</span>
+          </div>
+          <div class="metric reveal">
+            <span class="metric__icon"><i data-lucide="shield-check" aria-hidden="true"></i></span>
+            <strong class="metric__value">LGPD</strong>
+            <span class="metric__label">aderência por padrão</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. O QUE FAZEMOS -->
+      <section class="section" id="o-que-fazemos" aria-labelledby="t-fazemos">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow">O que fazemos</span>
+            <h2 id="t-fazemos">Implementação de IA local para empresas</h2>
+            <p>O ZeroData instala, configura e treina modelos de inteligência artificial dentro do ambiente do cliente — em servidores próprios ou em nuvem privada. A IA aprende com os seus documentos e sistemas, e nenhum dado precisa sair da empresa.</p>
+          </header>
+          <div class="grid grid--4">
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="server" aria-hidden="true"></i></span>
+              <h3>Instalação on-premise</h3>
+              <p>Implantamos a plataforma no seu data center ou na sua nuvem privada, com a arquitetura dimensionada para a sua carga.</p>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="cpu" aria-hidden="true"></i></span>
+              <h3>Modelos open-source otimizados</h3>
+              <p>Selecionamos e ajustamos modelos abertos para rodar com eficiência no hardware que você já tem ou pretende adquirir.</p>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="plug" aria-hidden="true"></i></span>
+              <h3>Integração com seus sistemas</h3>
+              <p>Conectamos a IA a ERP, CRM, gestão de documentos e bases internas, respeitando as permissões de cada usuário.</p>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="life-buoy" aria-hidden="true"></i></span>
+              <h3>Suporte e evolução contínua</h3>
+              <p>Monitoramos, atualizamos os modelos e evoluímos os casos de uso junto com a sua operação.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SOLUÇÕES -->
+      <section class="section section--alt" id="solucoes" aria-labelledby="t-solucoes">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow">Soluções</span>
+            <h2 id="t-solucoes">IA aplicada aos processos da sua empresa</h2>
+            <p>Casos de uso prontos para adaptar à sua realidade, todos executados dentro do seu perímetro.</p>
+          </header>
+          <div class="solutions">
+            <article class="card card--feature reveal">
+              <span class="card__icon"><i data-lucide="message-square" aria-hidden="true"></i></span>
+              <h3>Assistente Corporativo</h3>
+              <p>Um assistente que responde com base nos documentos, políticas e sistemas da sua empresa, com controle de acesso por perfil.</p>
+              <div class="chat" aria-hidden="true">
+                <div class="chat__bar"><span class="chat__dot"></span> Assistente ZeroData <span class="chat__tag"><i data-lucide="lock"></i> Processado localmente</span></div>
+                <div class="chat__msg chat__msg--user">Qual o prazo de reembolso previsto na política de viagens?</div>
+                <div class="chat__msg chat__msg--ai">Conforme a Política de Viagens (seção 4.2), o reembolso é pago em até 7 dias úteis após a aprovação da prestação de contas.</div>
+                <div class="chat__input"><span>Pergunte algo sobre sua empresa…</span><i data-lucide="send"></i></div>
+              </div>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="file-search" aria-hidden="true"></i></span>
+              <h3>Busca Inteligente em Documentos (RAG)</h3>
+              <p>Encontre respostas em milhares de arquivos, com a fonte citada e sem expor o conteúdo a terceiros.</p>
+              <a class="card__link" href="#contato">Saiba mais <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="workflow" aria-hidden="true"></i></span>
+              <h3>Automação de Processos</h3>
+              <p>Automatize triagens, classificações e rotinas repetitivas integrando a IA aos fluxos que você já usa.</p>
+              <a class="card__link" href="#contato">Saiba mais <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="bar-chart-3" aria-hidden="true"></i></span>
+              <h3>Análise de Dados Privada</h3>
+              <p>Consulte indicadores e bases internas em linguagem natural, mantendo os dados sensíveis sob seu controle.</p>
+              <a class="card__link" href="#contato">Saiba mais <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="headset" aria-hidden="true"></i></span>
+              <h3>IA para Atendimento</h3>
+              <p>Respostas rápidas e consistentes para clientes e equipes internas, baseadas no seu conhecimento oficial.</p>
+              <a class="card__link" href="#contato">Saiba mais <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            </article>
+            <article class="card reveal">
+              <span class="card__icon"><i data-lucide="file-check" aria-hidden="true"></i></span>
+              <h3>Revisão e Resumo de Contratos</h3>
+              <p>Resuma, compare e revise cláusulas contratuais em minutos, sem enviar documentos confidenciais para fora.</p>
+              <a class="card__link" href="#contato">Saiba mais <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. COMO FUNCIONA -->
+      <section class="section" id="como-funciona" aria-labelledby="t-como">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow">Como funciona</span>
+            <h2 id="t-como">Do diagnóstico à operação, em 4 etapas</h2>
+            <p>Um processo claro e acompanhado de perto, para colocar a IA em produção em até 30 dias.</p>
+          </header>
+          <ol class="timeline" id="timeline">
+            <li class="step reveal">
+              <span class="step__num">1</span>
+              <h3>Diagnóstico</h3>
+              <p>Mapeamos seus dados, sistemas e objetivos para definir os melhores casos de uso.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step__num">2</span>
+              <h3>Implantação</h3>
+              <p>Instalamos a IA na sua infraestrutura, com segurança e desempenho dimensionados.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step__num">3</span>
+              <h3>Treinamento e integração</h3>
+              <p>Conectamos a IA aos seus documentos e sistemas e capacitamos as equipes.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step__num">4</span>
+              <h3>Operação e suporte</h3>
+              <p>Monitoramento, atualizações e evolução contínua dos modelos e dos casos de uso.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 7. SEGURANÇA -->
+      <section class="section section--security" id="seguranca" aria-labelledby="t-seg">
+        <div class="container security">
+          <div class="security__text reveal">
+            <span class="eyebrow">Segurança e privacidade</span>
+            <h2 id="t-seg">Seus dados nunca saem de casa</h2>
+            <p>Com o ZeroData, o processamento acontece onde seus dados já estão. Sem intermediários, sem envio para terceiros e com trilha de auditoria de ponta a ponta.</p>
+            <ul class="checklist">
+              <li><i data-lucide="check" aria-hidden="true"></i> Dados processados 100% localmente</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Sem envio para APIs de terceiros</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Controle total de acessos e logs de auditoria</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Criptografia em repouso e em trânsito</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Adequação à LGPD</li>
+            </ul>
+          </div>
+
+          <div class="security__diagram reveal">
+            <figure class="diagram diagram--cloud">
+              <svg viewBox="0 0 300 220" role="img" aria-label="Diagrama: na IA em nuvem pública, os dados saem do perímetro da empresa em direção à nuvem de terceiros.">
+                <rect x="18" y="88" width="150" height="112" rx="16" fill="rgba(255,255,255,.03)" stroke="#6b6b73" stroke-width="1.5" stroke-dasharray="5 5"/>
+                <text x="30" y="110" class="dg-small" fill="#8a8a92">Sua empresa</text>
+                <g fill="#55555c">
+                  <rect x="36" y="124" width="50" height="10" rx="5"/><rect x="36" y="142" width="70" height="10" rx="5"/><rect x="36" y="160" width="40" height="10" rx="5"/>
+                </g>
+                <path class="leak" d="M168 140C205 140 200 92 228 88" fill="none" stroke="#C0505A" stroke-width="2" stroke-dasharray="4 6" stroke-linecap="round"/>
+                <path d="M222 82 232 87.5 223 94" fill="none" stroke="#C0505A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M212 62a15 15 0 0 1 3-29 20 20 0 0 1 38 6 14 14 0 0 1 2 23Z" fill="rgba(192,80,90,.12)" stroke="#8d4a50" stroke-width="1.5" transform="translate(4 -6)"/>
+                <text x="258" y="70" class="dg-small" fill="#a96870" text-anchor="middle">Terceiros</text>
+                <circle cx="40" cy="48" r="0" />
+              </svg>
+              <figcaption><span class="dot dot--muted"></span><strong>IA em nuvem pública</strong><span>Dados saem do perímetro da empresa</span></figcaption>
+            </figure>
+
+            <figure class="diagram diagram--zd">
+              <svg viewBox="0 0 300 220" role="img" aria-label="Diagrama: no ZeroData, os dados circulam apenas dentro do perímetro seguro da empresa.">
+                <defs>
+                  <radialGradient id="zdGlow" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0" stop-color="#ED3D06" stop-opacity=".35"/>
+                    <stop offset="1" stop-color="#ED3D06" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <rect x="18" y="18" width="264" height="184" rx="22" fill="rgba(237,61,6,.05)" stroke="#ED3D06" stroke-width="1.8"/>
+                <circle cx="150" cy="110" r="80" fill="url(#zdGlow)"/>
+                <text x="34" y="42" class="dg-small" fill="#FF8A5C">Perímetro da sua empresa</text>
+                <circle cx="150" cy="116" r="48" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+                <g class="orbit">
+                  <circle cx="150" cy="116" r="48" fill="none" stroke="#FF6A1F" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="40 262"/>
+                  <circle cx="198" cy="116" r="6" fill="#FFB340"/>
+                  <circle cx="102" cy="116" r="6" fill="#FF6A1F"/>
+                </g>
+                <rect x="128" y="94" width="44" height="44" rx="12" fill="#1D1D22" stroke="#ED3D06" stroke-width="1.5"/>
+                <path d="M141 117v-4a9 9 0 0 1 18 0v4M140 117h20v13h-20z" fill="none" stroke="#FF8A5C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" transform="translate(0 -3)"/>
+              </svg>
+              <figcaption><span class="dot dot--accent"></span><strong>ZeroData</strong><span>Dados circulam apenas dentro do perímetro</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. COMPARATIVO -->
+      <section class="section section--alt" id="comparativo" aria-labelledby="t-comp">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow">Comparativo</span>
+            <h2 id="t-comp">ZeroData vs. IA via API externa</h2>
+            <p>Veja o que muda quando a IA passa a rodar na sua própria infraestrutura.</p>
+          </header>
+          <div class="table-wrap reveal" tabindex="0" role="region" aria-label="Tabela comparativa (role para o lado em telas pequenas)">
+            <table class="compare">
+              <thead>
+                <tr><th scope="col"><span class="sr-only">Critério</span></th><th scope="col" class="is-zd">ZeroData</th><th scope="col">IA via API externa</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Localização dos dados</th>
+                  <td class="is-zd"><span class="yes"><i data-lucide="check" aria-hidden="true"></i></span> Dentro da sua infraestrutura</td>
+                  <td><span class="no"><i data-lucide="x" aria-hidden="true"></i></span> Servidores de terceiros</td></tr>
+                <tr><th scope="row">Dependência de terceiros</th>
+                  <td class="is-zd"><span class="yes"><i data-lucide="check" aria-hidden="true"></i></span> Nenhuma nas consultas</td>
+                  <td><span class="no"><i data-lucide="x" aria-hidden="true"></i></span> Total</td></tr>
+                <tr><th scope="row">Conformidade LGPD</th>
+                  <td class="is-zd"><span class="yes"><i data-lucide="check" aria-hidden="true"></i></span> Controle direto e auditável</td>
+                  <td><span class="no"><i data-lucide="x" aria-hidden="true"></i></span> Depende do fornecedor</td></tr>
+                <tr><th scope="row">Custo por consulta</th>
+                  <td class="is-zd"><span class="yes"><i data-lucide="check" aria-hidden="true"></i></span> Sem cobrança por consulta</td>
+                  <td><span class="no"><i data-lucide="x" aria-hidden="true"></i></span> Cobrança por uso</td></tr>
+                <tr><th scope="row">Personalização</th>
+                  <td class="is-zd"><span class="yes"><i data-lucide="check" aria-hidden="true"></i></span> Modelos ajustados ao seu negócio</td>
+                  <td><span class="no"><i data-lucide="x" aria-hidden="true"></i></span> Limitada ao que o provedor oferece</td></tr>
+                <tr><th scope="row">Disponibilidade offline</th>
+                  <td class="is-zd"><span class="yes"><i data-lucide="check" aria-hidden="true"></i></span> Funciona sem internet</td>
+                  <td><span class="no"><i data-lucide="x" aria-hidden="true"></i></span> Exige conexão constante</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. SETORES -->
+      <section class="section" id="setores" aria-labelledby="t-setores">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow">Setores atendidos</span>
+            <h2 id="t-setores">Feito para quem lida com dados sensíveis</h2>
+            <p>Segmentos em que privacidade, sigilo e conformidade não são opcionais.</p>
+          </header>
+          <div class="grid grid--3 sectors">
+            <article class="card card--sm reveal"><span class="card__icon"><i data-lucide="scale" aria-hidden="true"></i></span><div><h3>Jurídico</h3><p>Pesquisa e revisão de documentos com sigilo preservado.</p></div></article>
+            <article class="card card--sm reveal"><span class="card__icon"><i data-lucide="landmark" aria-hidden="true"></i></span><div><h3>Financeiro</h3><p>Análises e conciliações sem expor informações de clientes.</p></div></article>
+            <article class="card card--sm reveal"><span class="card__icon"><i data-lucide="heart-pulse" aria-hidden="true"></i></span><div><h3>Saúde</h3><p>Apoio a rotinas clínicas e administrativas com dados protegidos.</p></div></article>
+            <article class="card card--sm reveal"><span class="card__icon"><i data-lucide="factory" aria-hidden="true"></i></span><div><h3>Indústria</h3><p>Conhecimento técnico e processos disponíveis no chão de fábrica.</p></div></article>
+            <article class="card card--sm reveal"><span class="card__icon"><i data-lucide="shopping-bag" aria-hidden="true"></i></span><div><h3>Varejo</h3><p>Atendimento e inteligência comercial com a base de clientes sob controle.</p></div></article>
+            <article class="card card--sm reveal"><span class="card__icon"><i data-lucide="building-2" aria-hidden="true"></i></span><div><h3>Governo</h3><p>Soberania de dados para órgãos e instituições públicas.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. PLANOS -->
+      <section class="section section--alt" id="planos" aria-labelledby="t-planos">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow">Planos</span>
+            <h2 id="t-planos">Um plano para cada estágio da sua jornada</h2>
+            <p>Do primeiro caso de uso à operação em escala corporativa.</p>
+          </header>
+          <div class="plans">
+            <article class="plan reveal">
+              <h3>Essencial</h3>
+              <p class="plan__desc">Para começar com IA privada em um caso de uso.</p>
+              <p class="plan__price">Sob consulta</p>
+              <ul class="checklist checklist--sm">
+                <li><i data-lucide="check" aria-hidden="true"></i> 1 caso de uso implantado</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Instalação em servidor único</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Modelos open-source otimizados</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Busca em documentos (RAG)</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Suporte em horário comercial</li>
+              </ul>
+              <a class="btn btn--outline btn--block" href="#contato">Falar com especialista</a>
+            </article>
+            <article class="plan plan--featured reveal">
+              <span class="plan__badge">Mais escolhido</span>
+              <h3>Profissional</h3>
+              <p class="plan__desc">Para empresas que querem integrar a IA à operação.</p>
+              <p class="plan__price">Sob consulta</p>
+              <ul class="checklist checklist--sm">
+                <li><i data-lucide="check" aria-hidden="true"></i> Até 5 casos de uso</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Integração com ERP, CRM e bases internas</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Controle de acesso por perfil e logs</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Automação de processos</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Atualizações e evolução contínuas</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Suporte prioritário</li>
+              </ul>
+              <a class="btn btn--primary btn--block" href="#contato">Falar com especialista</a>
+            </article>
+            <article class="plan reveal">
+              <h3>Enterprise</h3>
+              <p class="plan__desc">Para operações críticas e grandes volumes.</p>
+              <p class="plan__price">Sob consulta</p>
+              <ul class="checklist checklist--sm">
+                <li><i data-lucide="check" aria-hidden="true"></i> Casos de uso ilimitados</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Alta disponibilidade e cluster</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> SSO e integração com diretório</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Ambiente isolado (air-gapped)</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> Ajuste fino de modelos</li>
+                <li><i data-lucide="check" aria-hidden="true"></i> SLA dedicado e time de sucesso</li>
+              </ul>
+              <a class="btn btn--outline btn--block" href="#contato">Falar com especialista</a>
+            </article>
+          </div>
+          <p class="plans__note reveal"><i data-lucide="info" aria-hidden="true"></i> Valores definidos após diagnóstico da sua infraestrutura.</p>
+        </div>
+      </section>
+
+      <!-- 11. FAQ -->
+      <section class="section" id="faq" aria-labelledby="t-faq">
+        <div class="container container--narrow">
+          <header class="section__head reveal">
+            <span class="eyebrow">FAQ</span>
+            <h2 id="t-faq">Perguntas frequentes</h2>
+          </header>
+          <div class="faq reveal">
+            <div class="faq__item">
+              <h3><button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-b1">Como a IA roda dentro da minha infraestrutura? <i data-lucide="plus" aria-hidden="true"></i></button></h3>
+              <div class="faq__panel" id="faq-1" role="region" aria-labelledby="faq-b1"><div><p>Instalamos a plataforma e os modelos em servidores da sua empresa ou na sua nuvem privada. As consultas são processadas ali mesmo, sem trafegar por serviços de terceiros.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3><button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-b2">Preciso de GPUs específicas? <i data-lucide="plus" aria-hidden="true"></i></button></h3>
+              <div class="faq__panel" id="faq-2" role="region" aria-labelledby="faq-b2"><div><p>Depende do caso de uso e do volume. No diagnóstico avaliamos o hardware existente e indicamos a configuração mais adequada, inclusive opções com modelos compactos que rodam em equipamentos mais simples.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3><button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-b3">Meus dados são usados para treinar modelos externos? <i data-lucide="plus" aria-hidden="true"></i></button></h3>
+              <div class="faq__panel" id="faq-3" role="region" aria-labelledby="faq-b3"><div><p>Não. Seus dados permanecem na sua infraestrutura e não são enviados a terceiros nem usados para treinar modelos de outras empresas.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3><button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-b4">Quanto tempo leva a implantação? <i data-lucide="plus" aria-hidden="true"></i></button></h3>
+              <div class="faq__panel" id="faq-4" role="region" aria-labelledby="faq-b4"><div><p>Em geral, até 30 dias entre o diagnóstico e a entrada em produção do primeiro caso de uso. Ambientes mais complexos podem exigir um cronograma sob medida.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3><button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-b5">Funciona sem internet? <i data-lucide="plus" aria-hidden="true"></i></button></h3>
+              <div class="faq__panel" id="faq-5" role="region" aria-labelledby="faq-b5"><div><p>Sim. Como o processamento é local, a IA pode operar em redes isoladas (air-gapped). A internet só é necessária se você optar por integrações externas.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3><button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-b6">Como é feito o suporte? <i data-lucide="plus" aria-hidden="true"></i></button></h3>
+              <div class="faq__panel" id="faq-6" role="region" aria-labelledby="faq-b6"><div><p>Nossa equipe acompanha a operação, aplica atualizações e atende chamados por canais dedicados. Os níveis de atendimento e SLA variam conforme o plano contratado.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. CTA FINAL + CONTATO -->
+      <section class="section section--cta" id="contato" aria-labelledby="t-cta">
+        <div class="container">
+          <div class="cta">
+            <div class="cta__text">
+              <h2 id="t-cta">Leve a IA para dentro da sua empresa</h2>
+              <p>Conte um pouco sobre o seu cenário e nossa equipe retorna com uma proposta de diagnóstico, sem compromisso.</p>
+              <ul class="cta__points">
+                <li><i data-lucide="shield-check" aria-hidden="true"></i> Seus dados continuam com você</li>
+                <li><i data-lucide="calendar-check" aria-hidden="true"></i> Implantação em até 30 dias</li>
+                <li><i data-lucide="message-square" aria-hidden="true"></i> Resposta em até 1 dia útil</li>
+              </ul>
+            </div>
+
+            <form class="form" id="contact-form" novalidate>
+              <div class="field">
+                <label for="f-nome">Nome</label>
+                <input id="f-nome" name="nome" type="text" autocomplete="name" required aria-describedby="e-nome">
+                <p class="field__error" id="e-nome" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="f-email">E-mail corporativo</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" placeholder="voce@suaempresa.com.br" required aria-describedby="e-email">
+                <p class="field__error" id="e-email" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="f-empresa">Empresa</label>
+                <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required aria-describedby="e-empresa">
+                <p class="field__error" id="e-empresa" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="f-msg">Mensagem</label>
+                <textarea id="f-msg" name="mensagem" rows="4" required aria-describedby="e-msg"></textarea>
+                <p class="field__error" id="e-msg" role="alert"></p>
+              </div>
+              <button class="btn btn--primary btn--block" type="submit" id="form-submit">Solicitar demonstração</button>
+              <p class="form__status" id="form-status" role="status" aria-live="polite" hidden>
+                <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                <span>Mensagem enviada! Nossa equipe entrará em contato em breve.</span>
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 13. RODAPÉ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <a class="logo" href="#topo" aria-label="ZeroData — voltar ao início">
+              <svg class="logo__mark" aria-hidden="true"><use href="#zd-mark"/></svg>
+              <span class="logo__text">ZERODATA</span>
+            </a>
+            <p>IA privada para empresas, instalada dentro da própria infraestrutura.</p>
+            <ul class="social">
+              <!-- Troque os links pelas suas redes -->
+              <li><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+              <li><a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a></li>
+              <li><a href="mailto:contato@zerodata.com.br" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></li>
+              <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a></li>
+            </ul>
+          </div>
+
+          <nav class="footer__cols" aria-label="Rodapé">
+            <div>
+              <h2 class="footer__title">Soluções</h2>
+              <ul>
+                <li><a href="#solucoes">Assistente Corporativo</a></li>
+                <li><a href="#solucoes">Busca em Documentos</a></li>
+                <li><a href="#solucoes">Automação de Processos</a></li>
+                <li><a href="#solucoes">IA para Atendimento</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer__title">Empresa</h2>
+              <ul>
+                <li><a href="#como-funciona">Como funciona</a></li>
+                <li><a href="#seguranca">Segurança</a></li>
+                <li><a href="#planos">Planos</a></li>
+                <li><a href="#contato">Contato</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer__title">Recursos</h2>
+              <ul>
+                <li><a href="#contato">Documentação</a></li>
+                <li><a href="#contato">Blog</a></li>
+                <li><a href="#contato">Whitepapers</a></li>
+                <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer__title">Legal</h2>
+              <ul>
+                <li><a href="#contato">Termos de uso</a></li>
+                <li><a href="#contato">Privacidade / LGPD</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© 2026 ZeroData. Todos os direitos reservados.</p>
+          <a class="to-top" href="#topo" id="to-top" aria-label="Voltar ao topo"><i data-lucide="arrow-up" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

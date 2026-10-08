@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo ZeroData</title>
+  <meta name="description" content="Demonstração simulada do Assistente Corporativo ZeroData: IA privada rodando dentro da infraestrutura da sua empresa.">
+  <meta name="theme-color" content="#0A0A0B">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/demo.css">
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+  <script src="js/demo.js" defer></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="zd-dot" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFB340"/><stop offset="1" stop-color="#ED3D06"/>
+      </linearGradient>
+      <symbol id="zd-mark" viewBox="0 0 40 40">
+        <path d="M20 3.5 34.3 11.75v16.5L20 36.5 5.7 28.25v-16.5L20 3.5Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+        <ellipse cx="20" cy="20" rx="4.6" ry="7" fill="none" stroke="currentColor" stroke-width="2.6"/>
+        <circle cx="30" cy="10.5" r="3.4" fill="url(#zd-dot)"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="app" id="app">
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- Barra lateral minimalista -->
+    <aside class="sidebar" id="sidebar" aria-label="Conversas">
+      <div class="sidebar__top">
+        <button class="new-chat" id="new-chat" type="button"><i data-lucide="square-pen"></i> Nova conversa</button>
+        <button class="icon-btn sidebar__close" id="sidebar-close" type="button" aria-label="Fechar menu"><i data-lucide="x"></i></button>
+      </div>
+
+      <nav class="history" aria-label="Histórico">
+        <p class="history__label">Recentes</p>
+        <ul id="history-list">
+          <li><button type="button" data-conv="contrato"><span>Revisão de contrato de fornecedor</span></button></li>
+          <li><button type="button" data-conv="politica"><span>Política de reembolso de viagens</span></button></li>
+          <li><button type="button" data-conv="vendas"><span>Resumo de vendas do trimestre</span></button></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <p class="private"><span class="live-dot"></span> Ambiente privado · dados locais</p>
+        <a class="back-link" href="index.html"><i data-lucide="arrow-left"></i> Voltar ao site</a>
+      </div>
+    </aside>
+
+    <!-- Área principal -->
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"><i data-lucide="menu"></i></button>
+        <a class="mini-logo" href="index.html" aria-label="ZeroData — voltar ao site">
+          <svg aria-hidden="true"><use href="#zd-mark"/></svg><span>ZeroDATA</span>
+        </a>
+      </header>
+
+      <div class="scroll" id="scroll">
+        <div class="thread" id="thread">
+          <!-- Estado vazio: logo + chamada -->
+          <section class="empty" id="empty" aria-labelledby="empty-title">
+            <div class="brand" aria-hidden="true">
+              <svg class="brand__mark"><use href="#zd-mark"/></svg>
+              <span class="brand__text">ZERODATA</span>
+            </div>
+            <h1 id="empty-title">Como podemos ajudar?</h1>
+          </section>
+
+          <div class="messages" id="messages" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <footer class="composer-wrap">
+        <form class="composer" id="composer" autocomplete="off">
+          <button class="icon-btn" type="button" id="attach" aria-label="Anexar documento"><i data-lucide="paperclip"></i></button>
+          <label class="sr-only" for="prompt">Mensagem</label>
+          <textarea id="prompt" rows="1" placeholder="Pergunte algo sobre sua empresa…" maxlength="2000"></textarea>
+          <button class="send" id="send" type="submit" aria-label="Enviar mensagem" disabled><i data-lucide="arrow-up"></i></button>
+        </form>
+        <p class="disclaimer">Demonstração simulada, com respostas ilustrativas. Seus dados permanecem na sua infraestrutura.</p>
+      </footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
